@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/QFP_ZJT/ClionProjects/Teight/IDA.h
+
+/Users/QFP_ZJT/ClionProjects/Teight/main.cpp
+iostream
+-
+fstream
+-
+node.hpp
+/Users/QFP_ZJT/ClionProjects/Teight/node.hpp
+tree.hpp
+/Users/QFP_ZJT/ClionProjects/Teight/tree.hpp
+IDA.h
+/Users/QFP_ZJT/ClionProjects/Teight/IDA.h
+
+/Users/QFP_ZJT/ClionProjects/Teight/node.hpp
+vector
+-
+
+/Users/QFP_ZJT/ClionProjects/Teight/tree.hpp
+node.hpp
+/Users/QFP_ZJT/ClionProjects/Teight/node.hpp
+queue
+-
+set
+-
+string
+-
+sstream
+-
+
