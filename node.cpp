@@ -171,20 +171,19 @@ void node::Printf() {
 }
 
 //
-void node::getSimilarity_same(node *another) {
+void node::getSimilarity_same(node *another,int hh) {
     for (int i = 0; i < 9; i++) {
         if (this->P[i] == another->P[i])
             Similarity++;
     }
+    h = hh++;
+    Similarity +=h;
 }
 
-void node::getSimilarity_distance(node *another) {
+void node::getSimilarity_distance(node *another,int hh) {
     int j = 0;
-    node *node = this;
-    while (node->father) {
-        Similarity++;
-        node = node->father;
-    }
+    h = hh++;
+    Similarity += h;
     temp_dis = Similarity;
     for (int i = 0; i < 9; i++) {
         if (this->P[i] == 0)

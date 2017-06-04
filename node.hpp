@@ -64,9 +64,9 @@ public:
     }
 
     //提供相似度
-    void getSimilarity_same(node *another);
+    void getSimilarity_same(node *another,int hh);
 
-    void getSimilarity_distance(node *another);
+    void getSimilarity_distance(node *another,int hh);
 
 //自定义排序方式
     struct cmp_des {
@@ -97,7 +97,9 @@ public:
     //    父节点
     node *father = NULL;
 
-    int Similarity;
+    int Similarity=0;
+    //深度
+    int h=0;
 
     int temp_dis;
 };

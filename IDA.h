@@ -1,7 +1,7 @@
 //
 // Created by ZJT on 2017/5/8.
 //
-//a new contribution
+
 #ifndef TEIGHT_IDA_H
 #define TEIGHT_IDA_H
 
@@ -53,7 +53,7 @@ public:
         if (g + h > MaxF)
             return false;
         node nxt;
-        if (cur.r > 2 && preDir != 0) {
+        if (cur.r > 2 && preDir != 1) {
             //        上
             nxt = cur;
             swap(nxt.arr[cur.r], nxt.arr[cur.r + dir[0]]);
@@ -64,7 +64,7 @@ public:
             if (dfs(nxt, g + 1, h - dis[nxt.r][k] + dis[cur.r][k], 0))
                 return true;
         }
-        if (cur.r < 6 && preDir != 1) {
+        if (cur.r < 6 && preDir != 0) {
             nxt = cur;
             swap(nxt.arr[cur.r], nxt.arr[cur.r + dir[1]]);
             nxt.r += dir[1];
@@ -74,7 +74,7 @@ public:
             if (dfs(nxt, g + 1, h - dis[nxt.r][k] + dis[cur.r][k], 1))
                 return true;
         }
-        if (cur.r % 3 > 0 && preDir != 2) {
+        if (cur.r % 3 > 0 && preDir != 3) {
             nxt = cur;
             swap(nxt.arr[cur.r], nxt.arr[cur.r + dir[2]]);
             nxt.r += dir[2];
@@ -84,7 +84,7 @@ public:
             if (dfs(nxt, g + 1, h - dis[nxt.r][k] + dis[cur.r][k], 2))
                 return true;
         }
-        if (cur.r % 3 < 2 && preDir != 3) {
+        if (cur.r % 3 < 2 && preDir != 2) {
             nxt = cur;
             swap(nxt.arr[cur.r], nxt.arr[cur.r + dir[3]]);
             nxt.r += dir[3];
@@ -146,10 +146,10 @@ public:
         for (i = 0; i < 9 && be.arr[i] != 0; i++);
         be.r = i;
         for (i = 0; i < 9 && en.arr[i] != 0; i++);
-        en.r = 4;
+        en.r = i;
         if (IsSolvable(be) == IsSolvable(en)) {
             IDAstar();
-            node* re;
+            
 //            vector<node*> container;
 //            container.push_back(new node(be.arr,NULL,0));
             int i = 0 ;

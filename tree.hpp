@@ -94,7 +94,8 @@ public:
                     ori_leavel.push_back(ori_next);
                     ori_current = ori_next;
                     ori_next = 0;
-
+                    //****************************************
+                    cout<<endl<<endl;
                 }
                 ori_current--;
             } else {

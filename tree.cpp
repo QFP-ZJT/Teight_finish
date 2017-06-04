@@ -33,11 +33,13 @@ node *tree::onestep(node *a, int whatSim) {
         if (temp == int_node_tree.end())//没有重复的向其中添加
         {
             int_node_tree.insert(b[i]->hash);
+            //**********************************************************************************
+            b[i]->Printf();
             if (whatSim == onestep_same) {
-                b[i]->getSimilarity_same(object);
+                b[i]->getSimilarity_same(object,a->h);
                 node_tree_sortbysim_same.push(b[i]);
             } else if (whatSim == onestep_distance) {
-                b[i]->getSimilarity_distance(object)/*+b[i]->getSimilarity_distance(original)*/;
+                b[i]->getSimilarity_distance(object,a->h)/*+b[i]->getSimilarity_distance(original)*/;
                 node_tree_sortbysim_dis.push(b[i]);
             } else;
             //            TODO 刷新判断是否相等
@@ -133,7 +135,7 @@ vector<node *> tree::onestepfortwoLR(node *a) {
         {
             int_node_tree.insert(va[i]->hash);
 //TODO 更改相似度的判断条件
-            va[i]->getSimilarity_same(object);
+            va[i]->getSimilarity_same(object,a->h);
             node_tree.push_back(va[i]);
             level_log(ori, add);
             size++;
@@ -167,7 +169,7 @@ vector<node *> tree::onestepfortwoRL(node *b) {
         {
 //            TODO 更改相似度的判断条件
             int_re_node_tree.insert(vb[i]->hash);
-            vb[i]->getSimilarity_same(object);
+            vb[i]->getSimilarity_same(object,b->h);
             re_node_tree.push_back(vb[i]);
             level_log(ob, add);
             re_size++;
@@ -241,7 +243,7 @@ void tree::findpathbysim_same() {
     cout << "一对一相似度比较法:" << endl;
     level_ini();
 //    TODO *node 的含义
-    original->getSimilarity_same(object);
+    original->getSimilarity_same(object,0);
     node_tree_sortbysim_same.push(original);
     while (!node_tree_sortbysim_same.empty()) {
         node *re = onestep(node_tree_sortbysim_same.top(), onestep_same);
@@ -263,7 +265,7 @@ void tree::findpathbysim_dis() {
     cout << "距离相似度比较法:" << endl;
     level_ini();
 //    TODO *node 的含义
-    original->getSimilarity_distance(object);
+    original->getSimilarity_distance(object,0);
     node_tree_sortbysim_dis.push(original);
     while (!node_tree_sortbysim_dis.empty()) {
         node *re = onestep(node_tree_sortbysim_dis.top(), onestep_distance);
